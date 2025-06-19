@@ -8,7 +8,7 @@ const questions = [
     answer: false
   },
   {
-    question: "The sum $\\sum_{n=1}^\\infty \\frac{1}{n^2}$ converges.",
+    question: "The series $\\sum_{n=1}^\\infty \\frac{1}{n^2}$ converges.",
     answer: true
   }
 ];
