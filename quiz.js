@@ -15,19 +15,30 @@ const questions = [
 
 const container = document.getElementById("quiz-container");
 
-questions.forEach((q, index) => {
+questions.forEach((q, i) => {
   const div = document.createElement("div");
   div.innerHTML = `
-    <p><b>Q${index + 1}:</b> ${q.question}</p>
-    <button onclick="checkAnswer(${index}, true)">True</button>
-    <button onclick="checkAnswer(${index}, false)">False</button>
-    <p id="feedback-${index}"></p>
+    <p><b>Q${i + 1}:</b> ${q.question}</p>
+    <button id="true-${i}" onclick="checkAnswer(${i}, true)">True</button>
+    <button id="false-${i}" onclick="checkAnswer(${i}, false)">False</button>
+    <p id="feedback-${i}"></p>
   `;
   container.appendChild(div);
 });
 
+MathJax.typeset();
+
 function checkAnswer(index, selected) {
-  const result = selected === questions[index].answer;
+  const correct = questions[index].answer;
   const feedback = document.getElementById(`feedback-${index}`);
-  feedback.innerHTML = result ? "✅ Correct!" : "❌ Incorrect.";
+  const trueBtn = document.getElementById(`true-${index}`);
+  const falseBtn = document.getElementById(`false-${index}`);
+
+  // Disable both buttons
+  trueBtn.disabled = true;
+  falseBtn.disabled = true;
+
+  // Show result
+  feedback.innerHTML = selected === correct ? "Correct" : "Incorrect.";
+  MathJax.typeset(); // Re-render if LaTeX appears in feedback
 }
