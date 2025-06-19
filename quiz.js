@@ -46,7 +46,8 @@ function checkAnswer(index, selected) {
   MathJax.typeset(); // Re-render if LaTeX appears in feedback
 
   answeredCount++;
-  if (correct) correctCount++;
+  const isCorrect = selected === correct;
+  if (isCorrect) correctCount++;
 
   // If all questions answered, show total score
   if (answeredCount === questions.length) {
