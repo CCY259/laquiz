@@ -28,6 +28,9 @@ questions.forEach((q, i) => {
 
 MathJax.typeset();
 
+let answeredCount = 0;
+let correctCount = 0;
+
 function checkAnswer(index, selected) {
   const correct = questions[index].answer;
   const feedback = document.getElementById(`feedback-${index}`);
@@ -41,4 +44,14 @@ function checkAnswer(index, selected) {
   // Show result
   feedback.innerHTML = selected === correct ? "Correct" : "Incorrect.";
   MathJax.typeset(); // Re-render if LaTeX appears in feedback
+
+  answeredCount++;
+  if (isCorrect) correctCount++;
+
+  // If all questions answered, show total score
+  if (answeredCount === questions.length) {
+    const scoreDiv = document.createElement("div");
+    scoreDiv.innerHTML = `<h2>You got ${correctCount} out of ${questions.length} correct.</h2>`;
+    document.body.appendChild(scoreDiv);
+  }
 }
