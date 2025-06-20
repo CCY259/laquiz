@@ -1,14 +1,30 @@
 const questions = [
   {
-    question: "The derivative of $x^2$ is $2x$.",
-    answer: true
-  },
-  {
-    question: "$\\sqrt{2}$ is a rational number.",
+    question: "$\\mathbb{N}$ is a field.",
     answer: false
   },
   {
-    question: "The series $\\sum_{n=1}^\\infty \\frac{1}{n^2}$ converges.",
+    question: "$\\mathbb{Z}$ is a field.",
+    answer: false
+  },
+  {
+    question: "$\\mathbb{Q}$ is a field.",
+    answer: true
+  },
+  {
+    question: "$\\mathbb{R}\\setminus\\mathbb{Q}$ is a field.",
+    answer: false
+  },
+  {
+    question: "$\\mathbb{C}$ is a vector space over $\\mathbb{R}$",
+    answer: true
+  },
+  {
+    question: "$\\mathbb{C}$ is a vector space over $\\mathbb{C}$",
+    answer: true
+  },
+  {
+    question: "Every field $\\mathbb{F}$ is a vector space over $\\mathbb{F}$.",
     answer: true
   }
 ];
@@ -23,9 +39,9 @@ questions.forEach((q, i) => {
   const div = document.createElement("div");
   div.innerHTML = `
     <p><b>Q${i + 1}:</b> ${q.question}</p>
-    <button id="true-${i}" onclick="checkAnswer(${i}, true)">True</button>
-    <button id="false-${i}" onclick="checkAnswer(${i}, false)">False</button>
-    <p id="feedback-${i}"></p>
+    <button style = "font-size: 1.1em; padding: 5px 14px;", id="true-${i}" onclick="checkAnswer(${i}, true)">True</button>
+    <button style = "font-size: 1.1em; padding: 5px 14px;", id="false-${i}" onclick="checkAnswer(${i}, false)">False</button>
+    <span id="feedback-${i}" style="min-width: 100px; margin-left: 30px;"></span>
   `;
   container.appendChild(div);
 });
@@ -43,6 +59,14 @@ function checkAnswer(index, selected) {
   trueBtn.disabled = true;
   falseBtn.disabled = true;
 
+  // Highlight the clicked button
+  const selectedBtn = selected ? trueBtn : falseBtn;
+  if (selected === correct) {
+    selectedBtn.classList.add("correct");
+  } else {
+    selectedBtn.classList.add("wrong");
+  }
+
   const isCorrect = selected === correct;
   feedback.innerHTML = isCorrect ? "Correct!" : "Incorrect.";
 
@@ -54,10 +78,13 @@ function checkAnswer(index, selected) {
   // Show final score after last answer
   if (answeredCount === questions.length) {
     let grade;
-    if (correctCount >= 3) grade = 'Well Done!';
-    else if (correctCount == 2) grade = 'So close!';
-    else if (correctCount == 1) grade = 'Need more practice!';
+    if (correctCount == questions.length) grade = 'Genius Level!';
+    else if (correctCount >= questions.length-2) grade = 'So close!';
+    else if (correctCount >= questions.length-10) grade = 'Good Job.';
+    else if (correctCount >= questions.length-40) grade = 'Need more practice!';
     else grade = 'Habis lah!';
-    scoreBox.innerHTML = `<br><strong> You got ${correctCount} out of ${questions.length} correct. ${grade} </strong>`;
+    scoreBox.innerHTML = `<div style="font-size: 1.5em; font-weight: bold; margin-top: 50px; margin-bottom: 100px;">
+    You got ${correctCount} out of ${questions.length} correct. ${grade}
+    </div>`
   }
 }
