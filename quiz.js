@@ -160,7 +160,7 @@ const questions = [
     answer: true
   },
   {
-    question: "If $b_1,\\dots, b_n$ is a basis for $V$, then $b_1,\\dots, b_n$ is a basis for $V$ for any $\\lambda_1,\\dots,\\lambda_n\\in \\mathbb{F}$.",
+    question: "If $b_1,\\dots, b_n$ is a basis for $V$, then $\\lambda_1 b_1,\\dots, \\lambda_n b_n$ is a basis for $V$ for any $\\lambda_1,\\dots,\\lambda_n\\in \\mathbb{F}$.",
     answer: false
   },
   {
@@ -252,11 +252,11 @@ const questions = [
     answer: true
   },
   {
-    question: "$\\psi: \\mathbb{F}^n \\rightarrow \\mathbb{F}^m$ is surjective if and only if $\\operatorname{rank} A = m$.",
+    question: "$\\psi: \\mathbb{F}^n \\rightarrow \\mathbb{F}^m$ is surjective if and only if $\\operatorname{rank} \\psi = m$.",
     answer: true
   },
   {
-    question: "$\\psi: \\mathbb{F}^n \\rightarrow \\mathbb{F}^m$ is injective if and only if $\\operatorname{rank} A = m$.",
+    question: "$\\psi: \\mathbb{F}^n \\rightarrow \\mathbb{F}^m$ is injective if and only if $\\operatorname{rank} \\psi = m$.",
     answer: false
   },
   {
