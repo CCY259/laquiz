@@ -33,8 +33,8 @@
   </style>
 </head>
 <body>
-  <h1>Linear Algebruh Quiz</h1>
-  <div>I do it for fun.</div>
+  <h1>Linear Algebra Quiz</h1>
+  <div>A nerd did it for fun.</div>
   <div id="quiz-container"></div>
 
 
@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
         selectedBtn.classList.add(selected === correct ? "correct" : "wrong");
 
         const isCorrect = selected === correct;
-        feedback.innerHTML = isCorrect ? "Correct!" : "Incorrect.";
+        feedback.innerHTML = isCorrect ? "(¦3[▓▓]" : "＼(・｀(エ)・)/ ";
 
         answeredCount++;
         if (isCorrect) correctCount++;
@@ -79,7 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
           if (correctCount == questions.length) grade = 'Genius Level!';
           else if (correctCount >= questions.length-2) grade = 'So close!';
           else if (correctCount >= questions.length-10) grade = 'Good Job.';
-          else if (correctCount >= questions.length-40) grade = 'Need more practice!';
+          else if (correctCount >= questions.length-20) grade = 'Need more practice!';
           else grade = 'Habis lah!';
           scoreBox.innerHTML = `<div style="font-size: 1.5em; font-weight: bold; margin-top: 50px; margin-bottom: 50px;">
           You got ${correctCount} out of ${questions.length} correct. ${grade}
