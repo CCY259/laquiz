@@ -76,11 +76,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (answeredCount === questions.length) {
           let grade;
-          if (correctCount == questions.length) grade = 'Genius Level!';
-          else if (correctCount >= questions.length-2) grade = 'So close!';
-          else if (correctCount >= questions.length-10) grade = 'Good Job.';
-          else if (correctCount >= questions.length-20) grade = 'Need more practice!';
-          else grade = 'Habis lah!';
+          if (correctCount == questions.length) grade = 'Genius Level! I love you so matcha.';
+          else if (correctCount >= questions.length-5) grade = 'So close! Give you a chocolatte.';
+          else if (correctCount >= questions.length-20) grade = 'Good Job. Give you a cookie. Crooked Hillary.';
+          else if (correctCount >= questions.length-30) grade = 'Masih memuaskan. Kasih satu nasi lemak.';
+          else if (correctCount >= questions.length-50) grade = 'Need more practice!';
+          else grade = 'Hello what happen? Habis lah!';
           scoreBox.innerHTML = `<div style="font-size: 1.5em; font-weight: bold; margin-top: 50px; margin-bottom: 50px;">
           You got ${correctCount} out of ${questions.length} correct. ${grade}
           </div>`
