@@ -7,7 +7,7 @@
     href="http://math.chapman.edu/~jipsen/latexmathjax/latexmathjax.css" />
   <style>
   body {
-    font-size: 1.5em; 
+    font-size: 1.4em; 
     margin: 50px;
     padding-left: 100px;
     padding-right: 100px;
@@ -27,6 +27,9 @@
   button:disabled {
     opacity: 0.8;
   }
+  p {
+    text-indent: 0;
+  }
   </style>
 </head>
 <body>
@@ -38,5 +41,62 @@
   <div id="score-summary"></div>
   <script src="quiz.js"></script>
 
+  <button style="margin-top: 50px; margin-bottom: 50px;" onclick="localStorage.clear(); location.reload();">
+  🔄 Reset Progress
+</button>
+
 </body>
 </html>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  // Restore saved answers
+  questions.forEach((q, i) => {
+    const saved = localStorage.getItem(`question-${i}`);
+    if (saved !== null) {
+      const selected = saved === "true";
+      const trueBtn = document.getElementById(`true-${i}`);
+      const falseBtn = document.getElementById(`false-${i}`);
+      const feedback = document.getElementById(`feedback-${i}`);
+      const correct = questions[i].answer;
+
+      // Prevent double disable
+      if (trueBtn && falseBtn && !trueBtn.disabled && !falseBtn.disabled) {
+        trueBtn.disabled = true;
+        falseBtn.disabled = true;
+
+        const selectedBtn = selected ? trueBtn : falseBtn;
+        selectedBtn.classList.add(selected === correct ? "correct" : "wrong");
+
+        const isCorrect = selected === correct;
+        feedback.innerHTML = isCorrect ? "Correct!" : "Incorrect.";
+
+        answeredCount++;
+        if (isCorrect) correctCount++;
+
+        if (answeredCount === questions.length) {
+          let grade;
+          if (correctCount == questions.length) grade = 'Genius Level!';
+          else if (correctCount >= questions.length-2) grade = 'So close!';
+          else if (correctCount >= questions.length-10) grade = 'Good Job.';
+          else if (correctCount >= questions.length-40) grade = 'Need more practice!';
+          else grade = 'Habis lah!';
+          scoreBox.innerHTML = `<div style="font-size: 1.5em; font-weight: bold; margin-top: 50px; margin-bottom: 50px;">
+          You got ${correctCount} out of ${questions.length} correct. ${grade}
+          </div>`
+  }  
+      }
+
+
+    }
+  });
+
+  // Override checkAnswer to save answers automatically
+  const originalCheck = window.checkAnswer;
+  window.checkAnswer = function(index, selected) {
+    localStorage.setItem(`question-${index}`, selected);
+    originalCheck(index, selected);
+  };
+});
+</script>
+
