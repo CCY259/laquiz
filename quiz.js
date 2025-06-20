@@ -14,6 +14,10 @@ const questions = [
 ];
 
 const container = document.getElementById("quiz-container");
+const scoreBox = document.getElementById("score-summary");
+
+let answeredCount = 0;
+let correctCount = 0;
 
 questions.forEach((q, i) => {
   const div = document.createElement("div");
@@ -26,10 +30,6 @@ questions.forEach((q, i) => {
   container.appendChild(div);
 });
 
-MathJax.typeset();
-
-let answeredCount = 0;
-let correctCount = 0;
 
 function checkAnswer(index, selected) {
   const correct = questions[index].answer;
@@ -37,22 +37,27 @@ function checkAnswer(index, selected) {
   const trueBtn = document.getElementById(`true-${index}`);
   const falseBtn = document.getElementById(`false-${index}`);
 
-  // Disable both buttons
+  if (trueBtn.disabled || falseBtn.disabled) return; // prevent double-clicking
+
+  // Disable buttons
   trueBtn.disabled = true;
   falseBtn.disabled = true;
 
-  // Show result
-  feedback.innerHTML = selected === correct ? "Correct" : "Incorrect.";
-  MathJax.typeset(); // Re-render if LaTeX appears in feedback
+  const isCorrect = selected === correct;
+  feedback.innerHTML = isCorrect ? "Correct!" : "Incorrect.";
 
   answeredCount++;
-  const isCorrect = selected === correct;
   if (isCorrect) correctCount++;
 
-  // If all questions answered, show total score
+  // scoreBox.innerHTML = `<br><strong> Score: ${correctCount} / ${answeredCount}</strong>`;
+
+  // Show final score after last answer
   if (answeredCount === questions.length) {
-    const scoreDiv = document.createElement("div");
-    scoreDiv.innerHTML = `<h2>You got ${correctCount} out of ${questions.length} correct.</h2>`;
-    document.body.appendChild(scoreDiv);
+    let grade;
+    if (correctCount >= 3) grade = 'Well Done!';
+    else if (correctCount == 2) grade = 'So close!';
+    else if (correctCount == 1) grade = 'Need more practice!';
+    else grade = 'Habis lah!';
+    scoreBox.innerHTML = `<br><strong> You got ${correctCount} out of ${questions.length} correct. ${grade} </strong>`;
   }
 }
