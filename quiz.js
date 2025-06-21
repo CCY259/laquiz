@@ -240,7 +240,7 @@ const questions = [
     answer: true
   },
   {
-    question: "Let $\\psi:V\\rightarrow W$ be a linear map. Then $S$ spans $V$ if and only if $\\psi(S)$ spans $V$.",
+    question: "Let $\\psi:V\\rightarrow W$ be a linear map. Then $S$ spans $V$ if and only if $\\psi(S)$ spans $W$.",
     answer: false
   },
   {
