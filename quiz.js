@@ -16,15 +16,15 @@ const questions = [
     answer: false
   },
   {
-    question: "$\\mathbb{C}$ is a vector space over $\\mathbb{R}$.",
+    question: "$\\mathbb{C}$ can be a vector space over $\\mathbb{R}$.",
     answer: true
   },
   {
-    question: "$\\mathbb{C}$ is a vector space over $\\mathbb{C}$.",
+    question: "$\\mathbb{C}$ can be a vector space over $\\mathbb{C}$.",
     answer: true
   },
   {
-    question: "Every field $\\mathbb{F}$ is a vector space over $\\mathbb{F}$.",
+    question: "Every field $\\mathbb{F}$ can be a vector space over $\\mathbb{F}$.",
     answer: true
   },
   {
@@ -200,7 +200,7 @@ const questions = [
     answer: false
   },
   {
-    question: "Coordinate vector can be defined using an unordered basis.",
+    question: "Coordinate vector can be well-defined using an unordered basis.",
     answer: false
   },
   {
@@ -344,7 +344,7 @@ const questions = [
     answer: true
   },
   {
-    question: "If $A$ and $B$ are two $n \\times n$ matrices, then $AB$ and $BA$ have the same eigenvalues.",
+    question: "If $A$ is an $m\\times n$ matrix and $B$ is an $n\\times m$ matrix, then $AB$ and $BA$ have the same eigenvalues.",
     answer: false
   },
   {
@@ -356,19 +356,19 @@ const questions = [
     answer: false
   },
   {
-    question: "If $A$ has $n$ distinct eigenvectors, then $A$ is diagonalizable. ",
+    question: "If an $n\\times n$ matrix $A$ has $n$ distinct eigenvectors, then $A$ is diagonalizable. ",
     answer: false
   },
   {
-    question: "If $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.",
+    question: "If an $n\\times n$ matrix $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.",
     answer: true
   },
   {
-    question: "If $A$ is diagonalizable, then $A$ has $n$ distinct eigenvalues.",
+    question: "If an $n\\times n$ matrix $A$ is diagonalizable, then $A$ has $n$ distinct eigenvalues.",
     answer: false
   },
   {
-    question: "If $A$ is diagonalizable, then $A$ has $n$ distinct eigenvectors.",
+    question: "If an $n\\times n$ matrix $A$ is diagonalizable, then $A$ has $n$ distinct eigenvectors.",
     answer: true
   },
   {
