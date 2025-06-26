@@ -101,3 +101,12 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'Shift' || e.key === 'I')) {
+      e.preventDefault();
+    }
+  });
+</script>
+
