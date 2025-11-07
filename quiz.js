@@ -148,7 +148,7 @@ const questions = [
     answer: true
   },
   {
-    question: "If $\\{b_1,\dots, b_n\\}$ and $\\{c_1,\dots, c_n\\}$ are two bases for $V$, then $\\{b_1+c_1,\dots, b_n+c_n\\}$ is a basis for $V$.",
+    question: "If $\\{b_1,\\dots, b_n\\}$ and $\\{c_1,\\dots, c_n\\}$ are two bases for $V$, then $\\{b_1+c_1,\\dots, b_n+c_n\\}$ is a basis for $V$.",
     answer: false
   },
   {
@@ -472,4 +472,5 @@ function checkAnswer(index, selected) {
     </div>`
   }
 }
+
 
