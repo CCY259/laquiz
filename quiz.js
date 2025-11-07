@@ -398,7 +398,7 @@ const questions = [
   {
     question: "If $\\lambda_1,\\dots,\\lambda_k$ are all distinct eigenvalues of an $n\\times n$ matrix $A$, then $\\mathbb{F}^n = \\mathcal{E}_{\\lambda_1}+\\cdots+\\mathcal{E}_{\\lambda_k}$, where $\\mathcal{E}_{\\lambda_i}$ is the eigenspace of $\\lambda_i$.",
     answer: false
-  },
+  }
   // Remember to delete , for the last question
 ];
 
@@ -472,5 +472,6 @@ function checkAnswer(index, selected) {
     </div>`
   }
 }
+
 
 
