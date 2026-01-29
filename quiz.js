@@ -109,7 +109,7 @@ const questions = [
   },
   {
     question: "Any complement of a subspace of $V$ is a subspace of $V$.",
-    answer: false
+    answer: true
   },
   {
     question: "The sum of two subspaces $S$ and $T$ is the largest subspace contained in $S$ and $T$.",
